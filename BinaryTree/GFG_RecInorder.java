@@ -1,44 +1,27 @@
+/* A Binary Tree node
 
-
-/*
-class Node{
+class Node {
     int data;
-    Node next;
-    
-    Node(int x){
-        data = x;
-        next = null;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
     }
-}
-*/
-class GFG_LinkedListInsertion
-{
-    //Function to insert a node at the beginning of the linked list.
-    Node insertAtBeginning(Node head, int x)
-    {
-        // code here
-        Node newNode = new Node(x);
-        if(head==null)return newNode;
-        newNode.next = head;
-        head = newNode;
-        return head;
-    }
-    
-    //Function to insert a node at the end of the linked list.
-    Node insertAtEnd(Node head, int x)
-    {
-        // code here
-        Node newNode = new Node(x);
-        if(head==null)return newNode;
-        if(head.next==null){
-            head.next = newNode;
-            return head;
+} */
+class Solution {
+    // Function to return a list containing the inorder traversal of the tree.
+    ArrayList<Integer> inOrder(Node root) {
+        // Code
+        if(root==null){
+            ArrayList<Integer> res = new ArrayList<Integer>();
+            return res;
         }
-        Node curr = head;
-        while(curr.next!=null){
-            curr = curr.next;
-        }
-        curr.next = newNode;
-        return head;
+        ArrayList<Integer> res1 = inOrder(root.left);
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        for(int e: res1)res.add(e);
+        res.add(root.data);
+        ArrayList<Integer> res2 = inOrder(root.right);
+        for(int e: res2)res.add(e);
+        return res;
     }
 }
